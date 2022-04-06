@@ -38,20 +38,23 @@ stop = ""
 
 spaceTime = 0
 
-def intervalRandOrNot(approx):
-  if approx == '':
+def intervalRandOrNot(approxed):
+  if approxed == '':
     randomInterval = 0
     spaceTime = (interval * 60)
   else :
-    approx = int(approx)/100
-    randomInterval = (random.randint(-round(interval*approx),round(interval*approx))*60) + (random.randint(0,60))
+    approxed = int(approxed)/100
+    randomInterval = random.uniform(-(interval*60*approxed),interval*60*approxed)
     spaceTime = (interval * 60) + randomInterval
   return {"spaceTime":spaceTime,"randomInterval":randomInterval}
 
+
+spaceTime = intervalRandOrNot(approx)
+
 while stop != "stop":
-  spaceTime = intervalRandOrNot(approx)
   diffTmstp = datetime.datetime.today().timestamp() - dateStart.timestamp()
   if (diffTmstp >= spaceTime["spaceTime"]):
     sendMail()
-    print("Mail envoyé à "+ str(datetime.datetime.today())+" , avec une approximation de " + str(spaceTime["randomInterval"]))
+    print("Mail envoyé à "+ str(datetime.datetime.today())+", avec une approximation de " + str(spaceTime["randomInterval"]) + " secondes.")
     dateStart = datetime.datetime.today()
+    spaceTime = intervalRandOrNot(approx)
