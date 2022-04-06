@@ -55,6 +55,6 @@ while stop != "stop":
   diffTmstp = datetime.datetime.today().timestamp() - dateStart.timestamp()
   if (diffTmstp >= spaceTime["spaceTime"]):
     sendMail()
-    print("Mail envoyé à "+ str(datetime.datetime.today())+", avec une différence approximative de " + str(spaceTime["randomInterval"]) + " secondes.")
+    print("Mail envoyé à "+ str(datetime.datetime.today())+", avec une différence approximative aléatoire de " + str(spaceTime["randomInterval"]) + " secondes.")
     dateStart = datetime.datetime.today()
     spaceTime = intervalRandOrNot(approx)
