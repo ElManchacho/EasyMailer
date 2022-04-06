@@ -26,7 +26,7 @@ dateStart = datetime.datetime.today()
 
 interval = int(input("Veuillez saisir l\'intervalle de temps entre chaque envoi en minutes : \n")) # en minutes
 
-approx = input("Si vous souhaitez que cette intervalle soit approximative (pour plus de crédibilité),\n veuillez renseigner un pourcentage d'approximation (sinon, appuyer sur Entrer) : \n")
+approx = input("Si vous souhaitez que cette intervalle soit approximative (pour plus de crédibilité),\nveuillez renseigner un pourcentage d'approximation (sinon, appuyer sur Entrer) : \n")
 
 body = 'Madame, Monsieur, \n\n Je me permet de vous recontacter afin d\'obtenir des nouvelles quant a l\'envoi de nos notes sur l\'espace MyEfrei.\nEn attente de votre retour.\n\nCordialement,\n\nLEROY DUCARDONNOY Paul'
 
@@ -43,7 +43,7 @@ def intervalRandOrNot(approx):
     spaceTime = (interval * 60)
   else :
     approx = int(approx)/100
-    spaceTime = (interval * 60) + (random.randint(-(interval*approx),(interval*approx))*60) + (random.randint(0,60))
+    spaceTime = (interval * 60) + (random.randint(-round(interval*approx),round(interval*approx))*60) + (random.randint(0,60))
   return spaceTime
 
 while stop != "stop":
@@ -51,5 +51,5 @@ while stop != "stop":
   diffTmstp = datetime.datetime.today().timestamp() - dateStart.timestamp()
   if (diffTmstp >= spaceTime):
     sendMail()
-    print("Mail sent at "+ str(datetime.datetime.today()) )
+    print("Mail envoyé à "+ str(datetime.datetime.today()) )
     dateStart = datetime.datetime.today()
