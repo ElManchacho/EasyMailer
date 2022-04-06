@@ -49,7 +49,6 @@ def intervalRandOrNot(approx):
 while stop != "stop":
   spaceTime = intervalRandOrNot(approx)
   diffTmstp = datetime.datetime.today().timestamp() - dateStart.timestamp()
-  print(spaceTime)
   if (diffTmstp >= spaceTime):
     sendMail()
     print("Mail sent at "+ str(datetime.datetime.today()) )
