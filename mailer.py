@@ -26,7 +26,7 @@ dateStart = datetime.datetime.today()
 
 interval = int(input("Veuillez saisir l\'intervalle de temps entre chaque envoi en minutes : \n")) # en minutes
 
-approx = input("Si vous souhaitez que cette intervalle soit approximative (pour plus de crédibilité),\nveuillez renseigner un pourcentage d'approximation (sinon, appuyer sur Entrer) : \n")
+approx = input("Si vous souhaitez que cette intervalle soit approximative (pour plus de crédibilité),\nveuillez renseigner un pourcentage d\'approximation (sinon, appuyer sur Entrer) : \n")
 
 body = 'Madame, Monsieur, \n\n Je me permet de vous recontacter afin d\'obtenir des nouvelles quant a l\'envoi de nos notes sur l\'espace MyEfrei.\nEn attente de votre retour.\n\nCordialement,\n\nLEROY DUCARDONNOY Paul'
 
