@@ -3,7 +3,7 @@ from checkLogsUI import checkLogsUI
 from templatesUI import templatesUI
 from sendMailsUI import sendMailsUI
 
-def menu():
+def menuUi():
 
   fenetre = Tk(screenName="EasyMailer")
 

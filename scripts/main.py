@@ -8,7 +8,7 @@ if __name__ == "__main__":
 
   atexit.register(cacheFlush)
 
-  menu()
+  menuUi()
 
  # mails = dataIntoMails()
 
