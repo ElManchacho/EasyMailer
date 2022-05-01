@@ -4,23 +4,22 @@ def sendMailsUI():
 
     fenetre = Tk(screenName="EasyMailer")
 
-    appHeader = LabelFrame(fenetre, text="Mails", padx=20, pady=20)
-    appHeader.pack(fill="both", expand="yes")
+    mainTitle = Label(fenetre, text="Envoyer des mails", font='bold').grid(row=0,column=1)
 
-    mainTitle = Label(appHeader, text="Envoyer des mails", font='bold').pack(side='top', padx=0, pady=0)
-
-    dest = Entry(appHeader, textvariable=str, width=30)
-    listDest = Listbox(appHeader)
+    dest = Entry(fenetre, textvariable=str, width=30)
+    listDest = Listbox(fenetre)
 
     def addDest():
-        listDest.insert("end",dest.get())
-        dest.delete(0,"end")
+        newDesti = dest.get()
+        if newDesti!='':
+            listDest.insert("end",newDesti)
+            dest.delete(0,"end")
 
-    button1 = Button(appHeader, text ='Ajouter un destinataire', width=30,command= lambda: addDest()).pack(side='left', row=0, column = 0)
-    dest.pack(side='left',row=1, column = 0,)
-    destTitle = Label(appHeader, text="Destinataires").pack(side='right', row=0, column = 1)
-    listDest.pack(side='right', row=1, column = 1)
+    button1 = Button(fenetre, text ='Ajouter un destinataire',command= lambda: addDest()).grid(row=4,column=1)
+    dest.grid(row=5,column=1)
+    destTitle = Label(fenetre, text="Destinataires").grid(row=3,column=3)
+    listDest.grid(row=5,column=3)
     
-    #subjectTitle = Label(appHeader, text="Objet").pack(side='top', padx=2, pady=8)
-    #subject = Entry(appHeader, textvariable=str, width=30).pack(side='top',padx=2, pady=7)
-    #message = Text(appHeader,bg="light grey",font=("black",10),height=20,width=100,padx=20,pady=20).pack(side='bottom',padx=2, pady=20)
+    subjectTitle = Label(fenetre, text="Objet").grid(row=5,column=4)
+    subject = Entry(fenetre, textvariable=str, width=30).grid(row=6,column=4)
+    message = Text(fenetre,bg="light grey",font=("black",10),height=20,width=100,padx=20,pady=20).grid(row=7,column=4)
