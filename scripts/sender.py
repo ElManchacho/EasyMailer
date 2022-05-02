@@ -16,8 +16,9 @@ def sender(mails):
             
             for mail in mails :
                 
-                sendMail(mail)
-                print("| Mail envoyé à "+ str(datetime.datetime.today())+", avec une différence approximative aléatoire de " + str(spaceTime["randomInterval"]) + " secondes.")
-                print("|_______________________________________________________________________________________________________________________________________________________")
-                dateStart = datetime.datetime.today()
-                spaceTime = intervalRandOrNot(spaceTime["interval"],spaceTime["approx"])
+                sendPending = sendMail(mail)
+                if sendPending != -1:
+                    print("| Mail envoyé à "+ str(datetime.datetime.today())+", avec une différence approximative aléatoire de " + str(spaceTime["randomInterval"]) + " secondes.")
+                    print("|_______________________________________________________________________________________________________________________________________________________")
+                    dateStart = datetime.datetime.today()
+                    spaceTime = intervalRandOrNot(spaceTime["interval"],spaceTime["approx"])
