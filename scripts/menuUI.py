@@ -5,7 +5,8 @@ from sendMailsUI import sendMailsUI
 
 def menuUi():
 
-  fenetre = Tk(screenName="EasyMailer")
+  fenetre = Tk()
+  fenetre.title("EasyMailer")
 
   appHeader = LabelFrame(fenetre, text="Menu", padx=20, pady=20)
   appHeader.pack(fill="both", expand="yes")
