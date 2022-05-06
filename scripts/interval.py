@@ -1,6 +1,6 @@
 import random
 
-def intervalRandOrNot(interval=-1,approx=-1):
+def intervalRandOrNot(interval,approx):
     
     spaceTime = 0
 

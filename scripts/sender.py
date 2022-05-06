@@ -2,10 +2,10 @@ import datetime
 from interval import intervalRandOrNot
 from sendMail import sendMail
 
-def sender(mails):
+def sender(mails,interval=-1,approx=-1):
 
     dateStart = datetime.datetime.today()
-    spaceTime = intervalRandOrNot()
+    spaceTime = intervalRandOrNot(interval,approx)
     stop = ""
 
     while stop != "stop":

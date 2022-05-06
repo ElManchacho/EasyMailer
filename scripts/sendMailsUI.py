@@ -41,6 +41,12 @@ def sendMailsUI():
     subject = Entry(fenetre, textvariable=str, width=30)
     message = Text(fenetre,bg="light grey",font=("black",10),height=20,width=100,padx=20,pady=20)
 
+    intervalTitle = Label(fenetre, text="Intervalle").grid(row=7,column=1)
+    interval = Entry(fenetre, textvariable=str, width=30)
+
+    approxTitle = Label(fenetre, text="Pourcentage d\'approximation").grid(row=7,column=4)
+    approx = Entry(fenetre, textvariable=str, width=30)
+
     def sendNewMail():
         emailList = []
         infos = loadInfos()[0]
@@ -57,11 +63,12 @@ def sendMailsUI():
                             "email_receiver": destinataire,
                             "message": 'Subject: {}\n\n{}'.format(objet,corpsMail)}
             emailList.append(email)
-        return sender(emailList), fenetre.destroy()
+        return sender(emailList, int(interval.get()),int(approx.get())), fenetre.destroy()
 
     subject.grid(row=1,column=5)
     message.grid(row=2,column=4,columnspan=2, rowspan=3)
-
+    interval.grid(row=7,column=2)
+    approx.grid(row=7,column=5)
     hr3 = ttk.Separator(fenetre,orient="horizontal").grid(pady=10, row=6,column=0, columnspan=6,sticky="ws")
-
-    sendButton = Button(fenetre, text ='Envoyer mail',command= lambda: sendNewMail(),width=50).grid(row=7,column=3,columnspan=2)
+    
+    sendButton = Button(fenetre, text ='Envoyer mail',command= lambda: sendNewMail(),width=50).grid(row=8,column=3,columnspan=2)
