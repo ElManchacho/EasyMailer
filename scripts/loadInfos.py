@@ -8,7 +8,8 @@ def loadInfos():
     json_file = open("../data/env.json")
     variables = json.load(json_file)
     json_file.close()
-
+    
+    """
     excelPath = "../data/MailList.xlsx"
 
     csvPath = "../data/MailList.csv"
@@ -36,5 +37,7 @@ def loadInfos():
     df1 = pd.DataFrame(rows,
                    index=indexes,
                    columns=headers)
+    """
+    df1 = []
 
     return [variables,df1]

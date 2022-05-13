@@ -2,14 +2,18 @@ import datetime
 from interval import intervalRandOrNot
 from sendMail import sendMail
 
-def sender(mails,interval=-1,approx=-1):
+def sender(mails,repet=1,interval=-1,approx=-1):
 
     dateStart = datetime.datetime.today()
     spaceTime = intervalRandOrNot(interval,approx)
-    stop = ""
 
-    while stop != "stop":
-
+    count = 0
+    
+    while count != repet:
+        print(count)
+        print(repet)
+        print(count != repet)
+        count += 1
         diffTmstp = datetime.datetime.today().timestamp() - dateStart.timestamp()
         
         if (diffTmstp >= spaceTime["spaceTime"]):

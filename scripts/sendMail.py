@@ -5,7 +5,6 @@ import ssl
 import sys
 
 def sendMail(mail):
-
     smtp_address = 'smtp.gmail.com'
     smtp_port = 465
     context = ssl.create_default_context()

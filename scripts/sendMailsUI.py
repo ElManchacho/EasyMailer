@@ -41,19 +41,38 @@ def sendMailsUI():
     subject = Entry(fenetre, textvariable=str, width=30)
     message = Text(fenetre,bg="light grey",font=("black",10),height=20,width=100,padx=20,pady=20)
 
-    intervalTitle = Label(fenetre, text="Intervalle").grid(row=7,column=1)
+    repetTitle = Label(fenetre, text="Nombre de répétitions").grid(row=7,column=0)
+    repet = Entry(fenetre, textvariable=str, width=30)   
+
+    intervalTitle = Label(fenetre, text="Intervalle").grid(row=7,column=2)
     interval = Entry(fenetre, textvariable=str, width=30)
 
     approxTitle = Label(fenetre, text="Pourcentage d\'approximation").grid(row=7,column=4)
     approx = Entry(fenetre, textvariable=str, width=30)
 
+    def warningPopUp():
+        popUp = Tk()
+        popUp.title("Warning !")
+        popUpLabel = Label(popUp, text="Saisissez au moins un Destinataire, un Objet de mail et un message", pady=10).grid(row=1,column=0, columnspan=3)
+        popUpButton1 = Button(popUp, text ='Ok',command= lambda: popUp.destroy())
+        return popUpButton1.grid(row=2,column=1)
+
     def sendNewMail():
         emailList = []
+        if emailList == []:
+            return warningPopUp()
         infos = loadInfos()[0]
-        objet = subject.get().replace('é','e')
+        objet = subject.get()
+        if objet == "":
+            return warningPopUp()
+        objet = objet.replace('é','e')
         objet = objet.replace('è','e')
         objet = objet.replace('ê','e')
-        corpsMail = message.get("1.0","end").replace('é','e')
+        
+        corpsMail = message.get("1.0","end")
+        if corpsMail == "":
+            return warningPopUp()
+        corpsMail = corpsMail.replace('é','e')
         corpsMail = corpsMail.replace('è','e')
         corpsMail = corpsMail.replace('ê','e')
         for destinataire in listDest.get('@1,0', 'end'):
@@ -63,11 +82,12 @@ def sendMailsUI():
                             "email_receiver": destinataire,
                             "message": 'Subject: {}\n\n{}'.format(objet,corpsMail)}
             emailList.append(email)
-        return sender(emailList, int(interval.get()),int(approx.get())), fenetre.destroy()
-
+        sender(emailList, repet.get(), int(interval.get()),int(approx.get()))
+        fenetre.destroy()
     subject.grid(row=1,column=5)
     message.grid(row=2,column=4,columnspan=2, rowspan=3)
-    interval.grid(row=7,column=2)
+    repet.grid(row=7,column=1)
+    interval.grid(row=7,column=3)
     approx.grid(row=7,column=5)
     hr3 = ttk.Separator(fenetre,orient="horizontal").grid(pady=10, row=6,column=0, columnspan=6,sticky="ws")
     
