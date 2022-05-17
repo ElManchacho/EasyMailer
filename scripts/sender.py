@@ -3,17 +3,15 @@ from interval import intervalRandOrNot
 from sendMail import sendMail
 
 def sender(mails,repet=1,interval=-1,approx=-1):
-
+    repet = int(repet)
     dateStart = datetime.datetime.today()
     spaceTime = intervalRandOrNot(interval,approx)
 
     count = 0
+
+    stop = False
     
-    while count != repet:
-        print(count)
-        print(repet)
-        print(count != repet)
-        count += 1
+    while stop != True :
         diffTmstp = datetime.datetime.today().timestamp() - dateStart.timestamp()
         
         if (diffTmstp >= spaceTime["spaceTime"]):
@@ -48,3 +46,6 @@ def sender(mails,repet=1,interval=-1,approx=-1):
 
                 if len(mails)<1:
                     return None
+            count += 1
+            if count == repet:
+                stop = True

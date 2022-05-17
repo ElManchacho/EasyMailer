@@ -59,7 +59,8 @@ def sendMailsUI():
 
     def sendNewMail():
         emailList = []
-        if emailList == []:
+        arrayDist = listDest.get('@1,0', 'end')
+        if arrayDist == ():
             return warningPopUp()
         infos = loadInfos()[0]
         objet = subject.get()
@@ -75,7 +76,7 @@ def sendMailsUI():
         corpsMail = corpsMail.replace('é','e')
         corpsMail = corpsMail.replace('è','e')
         corpsMail = corpsMail.replace('ê','e')
-        for destinataire in listDest.get('@1,0', 'end'):
+        for destinataire in arrayDist:
             email = {
                             "email_address": infos["sender"],
                             "email_password": infos["password"],
