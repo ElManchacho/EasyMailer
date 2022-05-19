@@ -1,4 +1,5 @@
 import datetime
+import json
 from interval import intervalRandOrNot
 from sendMail import sendMail
 
@@ -22,23 +23,36 @@ def sender(mails,repet=1,interval=-1,approx=-1):
             for mail in mails :
 
                 sendPending = sendMail(mail)
-                logFile = '..\logs\log_' + str(datetime.datetime.today().timestamp())+ '.txt'
+                logFile = '..\logs\log_' + str(datetime.datetime.today().timestamp())+ '.json'
                 
                 if sendPending["error"] != -1:
 
-                    logContent = "Mail envoye a "+ str(datetime.datetime.today())+", avec une difference approximative aleatoire de " + str(spaceTime["randomInterval"]) + " secondes."
-                    logContent += "\nExpediteur : "+mail["email_address"] + " - Destinataire : "+ mail["email_receiver"]
+                    logContent = {
+                        "mail" :{
+                            "sendTime":str(datetime.datetime.today()),
+                            "diffTime":str(spaceTime["randomInterval"]),
+                            "sender":mail["email_address"],
+                            "receiver": mail["email_receiver"]
+                            }
+                        }
                     dateStart = datetime.datetime.today()
                     spaceTime = intervalRandOrNot(spaceTime["interval"],spaceTime["approx"])
                
                 else :
-                    logContent = "Echec d'envoi de mail a "+ str(datetime.datetime.today()) + " secondes au destinataire \""+mail["email_receiver"]+"\".\nErreur : " + str(sendPending["errorText"])
+                    
+                    logContent = {
+                        "error" : {
+                            "errorTime":str(datetime.datetime.today()),
+                            "errorMsg":str(sendPending["errorText"]),
+                            "sender":mail["email_address"],
+                            "receiver": mail["email_receiver"]
+                        }
+                    }
                     mailToRemoveList.append(mail)
 
-                with open(logFile, 'w') as f:
-                        
-                        f.write(logContent)
-                        f.close()
+                f = open(logFile, 'w')
+                json.dump(logContent,f)
+                f.close()
 
             for mailToRemove in mailToRemoveList:
 

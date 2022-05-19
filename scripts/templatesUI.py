@@ -1,4 +1,8 @@
 from tkinter import *
 
-def templatesUI():
-    return "templatesUI"
+class templatesUIClass:
+    def main():
+
+        fenetre = Tk()
+
+        fenetre.title("EasyMailer")
