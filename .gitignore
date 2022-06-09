@@ -2,4 +2,4 @@ logs/*.json
 __pycache__
 *.xlsx
 *.csv
-data/env.json
+data/*env.json
