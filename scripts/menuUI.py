@@ -3,6 +3,8 @@ from checkLogsUI import *
 from templatesUI import *
 from sendMailsUI import *
 
+pageList = []
+
 def menuUi():
 
   fenetre = Tk()
@@ -12,9 +14,15 @@ def menuUi():
   appHeader.pack(fill="both", expand="yes")
   mainTitle = Label(appHeader, text="Bienvenue sur EasyMailer !", font='bold').pack(side=TOP, padx=0, pady=0)
   
-  def callPage(page):
+  def callPage(className):
 
-    page = page.main()
+    pageList.append(className)
+
+    for page in pageList:
+      if page.__qualname__ == className.__qualname__:
+        page.main("close")
+
+    className.main()
     
   button1 = Button(appHeader, text ='Envoyer des mails', width=30,command=lambda:callPage(sendMailsUIClass)).pack(side='top', padx=5, pady=5)
   button2 = Button(appHeader, text ='Visualiser les patrons enregistrés', width=30, command=lambda:callPage(templatesUIClass)).pack(side='top', padx=5, pady=5)

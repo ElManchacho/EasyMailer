@@ -1,11 +1,11 @@
-import imp
+#import imp
 from tkinter import *
 from tkinter import ttk
 from loadInfos import loadInfos
 from sender import sender
 
 class sendMailsUIClass:
-    def main():
+    def main(self):
 
         fenetre = Tk()
         fenetre.title("EasyMailer")
@@ -94,3 +94,8 @@ class sendMailsUIClass:
         hr3 = ttk.Separator(fenetre,orient="horizontal").grid(pady=10, row=6,column=0, columnspan=6,sticky="ws")
         
         sendButton = Button(fenetre, text ='Envoyer mail',command= lambda: sendNewMail(),width=50).grid(row=8,column=3,columnspan=2)
+
+        fenetre.mainloop()
+
+use = sendMailsUIClass()
+use.main()

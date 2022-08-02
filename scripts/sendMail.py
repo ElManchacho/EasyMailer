@@ -1,8 +1,10 @@
-import datetime
 import smtplib
 from sqlite3 import Date
 import ssl
 import sys
+from loadInfos import loadInfos
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 def sendMail(mail):
     smtp_address = 'smtp.gmail.com'
@@ -17,11 +19,13 @@ def sendMail(mail):
         while True:
 
             try:
-
+                print(mail["email_address"], mail["email_receiver"], mail["message"])
                 server.sendmail(mail["email_address"], mail["email_receiver"], mail["message"])
                 break
 
             except:
-                return {"error":-1,"errorText":sys.exc_info()}
+                errorData = {"error":-1,"errorText":sys.exc_info()}
+                print(errorData)
+                return errorData
         
     return {"error":0,"errorText":"none"}
