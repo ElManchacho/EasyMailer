@@ -1,3 +1,5 @@
+Python 3.10 or more
+
 pip install pandas
 
 pip install auto-py-to-exe
