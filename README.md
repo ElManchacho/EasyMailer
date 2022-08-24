@@ -1,5 +1,10 @@
 # EasyMailer
+
 Just a script for mailing
+
+## Before usage :
+
+Check the 'requirement.txt' file.
 
 ## Usage
 
