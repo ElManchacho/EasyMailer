@@ -1,7 +1,18 @@
 # EasyMailer
+
 Just a script for mailing
 
+## Before usage :
+
+Check the 'requirement.txt' file.
+
 ## Usage
+
+Go in the "script"" folder :
+
+![image](https://user-images.githubusercontent.com/74706889/186479970-d3bd3c5a-0eb5-4eb9-ab1c-5090887a0a3c.png)
+
+Launch the current version of the app with 'py .\main.py'
 
 Typical usage for now :
 
