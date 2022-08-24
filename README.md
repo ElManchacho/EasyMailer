@@ -3,6 +3,12 @@ Just a script for mailing
 
 ## Usage
 
+Go in the "script"" folder :
+
+![image](https://user-images.githubusercontent.com/74706889/186479970-d3bd3c5a-0eb5-4eb9-ab1c-5090887a0a3c.png)
+
+Launch the current version of the app with 'py .\main.py'
+
 Typical usage for now :
 
 ![image](https://user-images.githubusercontent.com/74706889/186478426-4dd972d8-6ae7-488f-99c5-04b6658b234b.png)
