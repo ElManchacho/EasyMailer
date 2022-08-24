@@ -2,4 +2,18 @@
 Just a script for mailing
 
 ## Usage
-For now, use the 'sendMailsUi.py' python script to use current functionning version
+
+Typical usage for now :
+
+![image](https://user-images.githubusercontent.com/74706889/186478426-4dd972d8-6ae7-488f-99c5-04b6658b234b.png)
+
+Don't forget to set up a .env.json file like the following :
+
+{"sender":"senderMail",
+"password":"passwordToUseEmailInApps"}
+
+(I know i can do a .env file but i was drunk while doing that so please just judge a little).
+
+After mails have been sent (or not if error), you'll have some generated logs here :
+
+![image](https://user-images.githubusercontent.com/74706889/186478630-28d5c02a-7bb0-4214-9e45-18a199c3ee97.png)
