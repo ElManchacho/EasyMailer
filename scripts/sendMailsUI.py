@@ -45,10 +45,10 @@ class sendMailsUIClass:
         repetTitle = Label(fenetre, text="Nombre de répétitions").grid(row=7,column=0)
         repet = Entry(fenetre, textvariable=str, width=30)   
 
-        intervalTitle = Label(fenetre, text="Intervalle").grid(row=7,column=2)
+        intervalTitle = Label(fenetre, text="Intervalle de temps en minute\nentre chaque mail").grid(row=7,column=2)
         interval = Entry(fenetre, textvariable=str, width=30)
 
-        approxTitle = Label(fenetre, text="Pourcentage d\'approximation").grid(row=7,column=4)
+        approxTitle = Label(fenetre, text="Pourcentage d\'approximation\nde l'intervalle de temps").grid(row=7,column=4)
         approx = Entry(fenetre, textvariable=str, width=30)
 
         def warningPopUp():
@@ -84,8 +84,12 @@ class sendMailsUIClass:
                                 "email_receiver": destinataire,
                                 "message": 'Subject: {}\n\n{}'.format(objet,corpsMail)}
                 emailList.append(email)
-            sender(emailList, repet.get(), int(interval.get()),int(approx.get()))
+            approxValue = int(approx.get())
+            intervalValue = int(interval.get())
+            repetValue = int(repet.get())
             fenetre.destroy()
+            sender(emailList, repetValue, intervalValue, approxValue)
+            
         subject.grid(row=1,column=5)
         message.grid(row=2,column=4,columnspan=2, rowspan=3)
         repet.grid(row=7,column=1)
